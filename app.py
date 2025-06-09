@@ -6,6 +6,7 @@ from sqlalchemy import text
 from database.models import Product
 from routes.product_routes import product_bp
 from database.extension import db
+from routes.auth_routes import auth_bp
 
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'  # for session management
@@ -17,8 +18,9 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
 
-# Register your blueprint
-app.register_blueprint(product_bp)
+# Register the blueprints
+app.register_blueprint(product_bp, url_prefix='/api')
+app.register_blueprint(auth_bp, url_prefix='/api')
 
 @app.route("/test-db")
 def test_db():
