@@ -29,6 +29,8 @@ db.init_app(app)
 app.config["JWT_SECRET_KEY"] = os.getenv('SECRET_KEY')
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=1)
 
+jwt = JWTManager(app)
+
 # Register the blueprints
 app.register_blueprint(product_bp, url_prefix='/api')
 app.register_blueprint(auth_bp, url_prefix='/api')

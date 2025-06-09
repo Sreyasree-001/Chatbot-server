@@ -55,6 +55,6 @@ def get_filtered_products():
             query = query.filter(Product.price <= max_price)
 
         products = query.all()
-        return jsonify([product.to_dict() for product in products])
+        return jsonify([product.to_dict() for product in products]), 201
     except Exception as e:
         return jsonify("error:", str(e)), 400
