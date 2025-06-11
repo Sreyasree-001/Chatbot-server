@@ -26,15 +26,15 @@ A backend server for an AI-powered chatbot application tailored for e-commerce p
    ```bash
    git clone https://github.com/Sreyasree-001/Chatbot-server.git
    cd Chatbot-server
-2. Create a virtual environment
-    python3 -m venv venv
-    source venv/bin/activate  # On Windows: venv\Scripts\activate
-3. Install dependencies
-    pip install -r requirements.txt
-4. Configure environment variables
-     Create a .env file and add your MongoDB URI and JWT secret:
-     DATABASE_URL="ypur-databse-url"
-      JWT_SECRET_KEY=your-secret-key
+2. Create a virtual environment:
+      python3 -m venv venv
+      source venv/bin/activate  # On Windows: venv\Scripts\activate
+3. Install dependencies:
+      pip install -r requirements.txt
+4. Configure environment variables:
+       Create a .env file and add your MongoDB URI and JWT secret:
+           DATABASE_URL="ypur-databse-url"
+            JWT_SECRET_KEY=your-secret-key
 5. Run the server :
    python app.py
 ## 🔍 API Endpoints
