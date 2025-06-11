@@ -13,7 +13,7 @@ A backend server for an AI-powered chatbot application tailored for e-commerce p
 ## 🛠️ Tech Stack
 
 - **Backend:** Python, Flask
-- **Database:** MongoDB (via PyMongo)
+- **Database:** MySQL (with Docker)
 - **Authentication:** JWT (JSON Web Tokens)
 - **Other Libraries:** 
   - `flask_cors` for CORS handling
