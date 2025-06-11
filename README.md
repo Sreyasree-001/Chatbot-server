@@ -7,7 +7,7 @@ A backend server for an AI-powered chatbot application tailored for e-commerce p
 - ✅ JWT-based authentication system
 - ✅ RESTful APIs for user login and registration
 - ✅ Dynamic product query handling (e.g., "show me electric products")
-- ✅ MongoDB integration for storing and fetching product data
+- ✅ MySQL integration for storing and fetching product data
 - ✅ Built using Flask and SQLAlchemy
 
 ## 🛠️ Tech Stack
@@ -33,17 +33,17 @@ A backend server for an AI-powered chatbot application tailored for e-commerce p
     pip install -r requirements.txt
 4. Configure environment variables
      Create a .env file and add your MongoDB URI and JWT secret:
-     MONGO_URI=mongodb://localhost:27017/your-db
+     DATABASE_URL="ypur-databse-url"
       JWT_SECRET_KEY=your-secret-key
 5. Run the server :
    python app.py
 ## 🔍 API Endpoints
-| Method | Endpoint    | Description             |
-| ------ | ----------- | ----------------------- |
-| POST   | `/register` | Register a new user     |
-| POST   | `/login`    | Login and receive token |
-| GET    | `/products` | Get all products        |
-| POST   | `/query`    | Smart product query     |
+| Method | Endpoint            | Description             |
+| ------ | ------------------- | ----------------------- |
+| POST   | `/register`         | Register a new user     |
+| POST   | `/login`            | Login and receive token |
+| GET    | `/search-products`  | Get all products        |
+| POST   | `/query`            | Smart product query     |
 
 ### 📌 Example Product Query
 {
