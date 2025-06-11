@@ -34,10 +34,11 @@ def login():
     try:
         data = request.get_json()
         user = User.query.filter_by(user_email=data['email']).first()
+        print(user.user_name)
 
         if user and check_password_hash(user.user_password, data['password']):
-            access_token = create_access_token(identity=user.id)
-            return jsonify(token=access_token, message="Login successful"), 200
+            access_token = create_access_token(identity=str(user.id))
+            return jsonify(token=access_token, username = user.user_name ,message="Login successful"), 200
         return jsonify({"message": "Invalid credentials"}), 401
     except Exception as e:
         return jsonify("error: ", str(e)),400

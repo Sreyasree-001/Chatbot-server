@@ -1,6 +1,9 @@
 from flask import Blueprint, request, jsonify
 from database.extension import db
 from database.models import Product
+from utils.query_parser import parse_query
+from flask_jwt_extended import get_jwt_identity, jwt_required
+from database.models import ChatMessage
 
 product_bp = Blueprint('product_bp', __name__)
 
@@ -58,3 +61,48 @@ def get_filtered_products():
         return jsonify([product.to_dict() for product in products]), 201
     except Exception as e:
         return jsonify("error:", str(e)), 400
+
+@product_bp.route('/search-products', methods=['GET'])
+@jwt_required()
+def query_products():
+    try:
+        user_query = request.args.get("q", "")
+        filters = parse_query(user_query)
+        user_id = get_jwt_identity()
+
+        query = Product.query
+
+        if filters.get("category"):
+            query = query.filter(Product.category.ilike(f"%{filters['category']}%"))
+        if filters.get("name"):
+            query = query.filter(Product.name.ilike(f"%{filters['name']}%"))
+        if filters.get("min_price") is not None:
+            query = query.filter(Product.price >= filters['min_price'])
+        if filters.get("max_price") is not None:
+            query = query.filter(Product.price <= filters['max_price'])
+
+        results = query.all()
+
+        # Format results
+        if results:
+            product_list = "\n".join([
+                f"{p.name} - ₹{p.price} [{p.category}]" for p in results
+            ])
+            bot_reply = f"Found {len(results)} product(s):\n" + product_list
+        else:
+            bot_reply = "No products found!"
+
+        # Save message
+        message = ChatMessage(
+            user_id=user_id,
+            user_message=user_query,
+            bot_response=bot_reply
+        )
+        db.session.add(message)
+        db.session.commit()
+
+        # Return proper response
+        return jsonify([p.to_dict() for p in results]) if results else jsonify({"message": "No products found!"}), 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400

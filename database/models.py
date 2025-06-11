@@ -42,3 +42,13 @@ class User(db.Model):
             "phone_number": self.phone_number,
             "created_at": self.created_at.isoformat()
         }
+
+class ChatMessage(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user = db.relationship('User', backref=db.backref('messages', lazy=True))
+    
+    user_message = db.Column(db.Text, nullable=False)
+    bot_response = db.Column(db.Text, nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.now)

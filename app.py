@@ -7,6 +7,7 @@ from database.models import Product
 from routes.product_routes import product_bp
 from database.extension import db
 from routes.auth_routes import auth_bp
+from routes.message_route import message_bp
 
 from flask_jwt_extended import JWTManager, create_access_token
 from datetime import timedelta
@@ -27,13 +28,14 @@ db.init_app(app)
 
 #JWT configure
 app.config["JWT_SECRET_KEY"] = os.getenv('SECRET_KEY')
-app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=1)
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=24)
 
 jwt = JWTManager(app)
 
 # Register the blueprints
 app.register_blueprint(product_bp, url_prefix='/api')
 app.register_blueprint(auth_bp, url_prefix='/api')
+app.register_blueprint(message_bp, url_prefix='/api')
 
 @app.route("/test-db")
 def test_db():

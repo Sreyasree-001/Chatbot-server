@@ -1,0 +1,5 @@
+👋 Welcome to *ShopBot*! 🛍️  
+I can help you find products. Try searching like:  
+- "Search for running shoes"  
+- "Find laptops under $1000"  
+- "Show me Adidas sneakers"  
