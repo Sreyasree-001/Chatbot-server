@@ -41,12 +41,12 @@ A backend server for an AI-powered chatbot application tailored for e-commerce p
 5. Run the server :
    python app.py
 ## 🔍 API Endpoints
-| Method | Endpoint            | Description             |
-| ------ | ------------------- | ----------------------- |
-| POST   | `/register`         | Register a new user     |
-| POST   | `/login`            | Login and receive token |
-| GET    | `/search-products`  | Get all products        |
-| POST   | `/query`            | Smart product query     |
+| Method | Endpoint                  | Description             |
+| ------ | ------------------------- | ----------------------- |
+| POST   | `/register`               | Register a new user     |
+| POST   | `/login`                  | Login and receive token |
+| GET    | `/search-products`        | Get all products        |
+| GET    | `/get-messages`           | Smart product query     |
 
 ### 📌 Example Product Query
 {
