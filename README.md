@@ -57,7 +57,8 @@ A backend server for an AI-powered chatbot application tailored for e-commerce p
 Authorization: Bearer <your_token>
 
 ## 📁 Project Structure
-![image](https://github.com/user-attachments/assets/34159d14-5f27-4e6e-92b1-43bcbb9578ab)
+![image](https://github.com/user-attachments/assets/1a58d3a6-340a-474e-97ee-88224a1e6735)
+
 
 ### 🙋‍♀️ Author
 Sreyasree Sasmal
@@ -66,3 +67,4 @@ Sreyasree Sasmal
 ### 📄 License
 This project is licensed under the MIT License.
 
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/Sreyasree-001/Chatbot-server)
