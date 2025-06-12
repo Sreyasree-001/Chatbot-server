@@ -18,7 +18,10 @@ A backend server for an AI-powered chatbot application tailored for e-commerce p
 - **Other Libraries:** 
   - `flask_cors` for CORS handling
   - `nltk` for basic NLP processing
-  - `pymongo` for database operations
+  - `flask_sqlalchemy` ORM for database models
+  - `flask_jwt_extended` Handles JWT creation, verification, and auth
+  - `werkzeug.security` For password hashing
+  - `python-dotenv` Load secrets like JWT_SECRET_KEY from .env
 
 ## 📦 Installation
 
