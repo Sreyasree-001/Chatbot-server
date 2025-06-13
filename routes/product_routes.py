@@ -36,31 +36,31 @@ def get_all_products():
     except Exception as e:
         return jsonify({"error": str(e)}), 400
     
-@product_bp.route('/products', methods=['GET'])
-def get_filtered_products():
-    print("I am inside filtered product")
-    try:
-        category = request.args.get('category')
-        name = request.args.get('name')
-        min_price = request.args.get('min_price', type=float)
-        max_price = request.args.get('max_price', type=float)
+# @product_bp.route('/products', methods=['GET'])
+# def get_filtered_products():
+#     print("I am inside filtered product")
+#     try:
+#         category = request.args.get('category')
+#         name = request.args.get('name')
+#         min_price = request.args.get('min_price', type=float)
+#         max_price = request.args.get('max_price', type=float)
 
-        # Build base query
-        query = Product.query
+#         # Build base query
+#         query = Product.query
 
-        if category:
-            query = query.filter(Product.category.ilike(f"%{category}%"))
-        if name:
-            query = query.filter(Product.name.ilike(f"%{name}%"))
-        if min_price is not None:
-            query = query.filter(Product.price >= min_price)
-        if max_price is not None:
-            query = query.filter(Product.price <= max_price)
+#         if category:
+#             query = query.filter(Product.category.ilike(f"%{category}%"))
+#         if name:
+#             query = query.filter(Product.name.ilike(f"%{name}%"))
+#         if min_price is not None:
+#             query = query.filter(Product.price >= min_price)
+#         if max_price is not None:
+#             query = query.filter(Product.price <= max_price)
 
-        products = query.all()
-        return jsonify([product.to_dict() for product in products]), 201
-    except Exception as e:
-        return jsonify("error:", str(e)), 400
+#         products = query.all()
+#         return jsonify([product.to_dict() for product in products]), 201
+#     except Exception as e:
+#         return jsonify("error:", str(e)), 400
 
 @product_bp.route('/search-products', methods=['GET'])
 @jwt_required()
