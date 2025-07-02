@@ -1,6 +1,6 @@
 # 🧠 Chatbot Server
 
-A backend server for an AI-powered chatbot application tailored for e-commerce platforms. This server handles user authentication, product queries, and intelligent response generation based on customer input.
+A backend server for a chatbot application tailored for e-commerce platforms. This server handles user authentication, product queries, and intelligent response generation based on customer input.
 
 ## 🚀 Features
 
